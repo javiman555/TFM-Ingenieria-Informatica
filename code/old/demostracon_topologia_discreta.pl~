@@ -1,0 +1,20 @@
+
+:- consult('conjuntos.pl'). % Cargar el fichero de conjuntos
+
+
+% Define el conjunto X
+conjunto_x([a, b, c]).
+
+
+% Define la topología dada t
+topologia_tau([[a], [b], [c], [], [a, b], [a, c], [b, c], [a, b, c]]).
+
+% Verifica si t es la topología discreta
+es_topologia_discreta :-
+    topologia_tau(Tau),
+    potencia(P,Tau),
+    subset(Tau, P),
+    writeln('La topología dada es la topología discreta.').
+
+% Ejecutar las pruebas y demostraciones al iniciar
+:- initialization(es_topologia_discreta).
